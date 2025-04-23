@@ -28,10 +28,24 @@ public class EmpleadoService {
     public Empleado findByNombreAndContrasenaHash(String nombre, String constrasenaHash){
         return repo.findByNombreAndContrasenaHash(nombre, constrasenaHash);
     }
-
-    public Empleado findByDniOrApellidosOrNombreUsuario(String dni, String apellidos, String nombreUsuario) {
-        return repo.findByDniOrApellidosOrNombreUsuario(dni, apellidos, nombreUsuario);
+    public List<Empleado> findMultiple(String dni, String apellidos, String nombreUsuario) {
+        return repo.findByDniContainingIgnoreCaseOrApellidosContainingIgnoreCaseOrNombreUsuarioContainingIgnoreCase(
+                dni, apellidos, nombreUsuario
+        );
     }
+
+
+    public Empleado findFlexible(String dni, String apellidos, String nombreUsuario) {
+        List<Empleado> empleados = repo.findAll();
+
+        return empleados.stream()
+                .filter(e -> (dni == null || dni.isBlank() || e.getDni().equals(dni)) &&
+                        (apellidos == null || apellidos.isBlank() || e.getApellidos().equalsIgnoreCase(apellidos)) &&
+                        (nombreUsuario == null || nombreUsuario.isBlank() || e.getNombreUsuario().equalsIgnoreCase(nombreUsuario)))
+                .findFirst()
+                .orElse(null);
+    }
+
 
     public List<Empleado> findAll() {
         return repo.findAll();
