@@ -30,10 +30,6 @@ public class EmpleadoController {
         return service.findMultiple(dni, apellidos, nombreUsuario);
     }
 
-
-
-
-
     @GetMapping("/find-and")
     public Long findByNombreAndContrasenaHash(@RequestParam String nombre, @RequestParam String contrasenaHash){
         Empleado empleado =  service.findByNombre(nombre);
