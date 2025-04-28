@@ -30,6 +30,13 @@ public class EmpleadoController {
         return service.findMultiple(dni, apellidos, nombreUsuario);
     }
 
+    @GetMapping("/find")
+    public Empleado findById(
+            @RequestParam(required = false) Long id) {
+        Optional<Empleado> empleado = service.findById(id);
+        return empleado.get();
+    }
+
     @GetMapping("/find-and")
     public Long findByNombreAndContrasenaHash(@RequestParam String nombre, @RequestParam String contrasenaHash){
         Empleado empleado =  service.findByNombre(nombre);
@@ -48,12 +55,6 @@ public class EmpleadoController {
 
     @PostMapping("/insert")
     public boolean save(@RequestBody Empleado empleado) {
-        BCryptPasswordEncoder hashedPassword = new BCryptPasswordEncoder();
-        if (empleado.getContrasenaHash() != null && !empleado.getContrasenaHash().isEmpty()) {
-            empleado.setContrasenaHash(hashedPassword.encode(empleado.getContrasenaHash()));
-        }
-
-
         Empleado insertado = service.save(empleado);
         return insertado != null;
     }
@@ -69,4 +70,3 @@ public class EmpleadoController {
         }
     }
 }
-

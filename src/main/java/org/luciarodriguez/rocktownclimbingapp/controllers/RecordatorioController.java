@@ -3,8 +3,10 @@ package org.luciarodriguez.rocktownclimbingapp.controllers;
 import org.luciarodriguez.rocktownclimbingapp.models.Recordatorio;
 import org.luciarodriguez.rocktownclimbingapp.services.RecordatorioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -27,8 +29,14 @@ public class RecordatorioController {
         return service.findRecordatorioByEmpleado(empleadoId);
     }
 
-    @PostMapping
+    @PostMapping("/insert")
     public Recordatorio save(@RequestBody Recordatorio recordatorio) {
         return service.save(recordatorio);
+    }
+
+    @PostMapping("/delete")
+    public ResponseEntity<Void> delete() {
+        service.removeAll();
+        return ResponseEntity.noContent().build(); // Devuelve HTTP 204
     }
 }

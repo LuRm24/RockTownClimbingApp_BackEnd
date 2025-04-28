@@ -20,6 +20,7 @@ public class RecordatorioService {
         return repo.findAll();
     }
 
+    public void removeAll() {repo.deleteAll();}
 
     public List<Recordatorio> findRecordatorioByEmpleado(Long empleadoId) {
         //return repo.findByEmpleado_Id(empleadoId);

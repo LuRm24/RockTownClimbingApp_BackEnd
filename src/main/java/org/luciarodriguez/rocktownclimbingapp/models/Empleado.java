@@ -22,6 +22,8 @@ public class Empleado {
     private String nombreUsuario;
     private String email;
     private String contrasenaHash;
+    private String telefono;
+
     @OneToMany(mappedBy = "empleado")
     private List<Actividad> actividades = new ArrayList<>();
 
@@ -98,5 +100,13 @@ public class Empleado {
 
     public String getContrasenaHash() {
         return contrasenaHash;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }
