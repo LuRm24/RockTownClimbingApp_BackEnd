@@ -31,27 +31,24 @@ public class EmpleadoController {
     }
 
     @GetMapping("/find")
-    public Empleado findById(
-            @RequestParam(required = false) Long id) {
-        Optional<Empleado> empleado = service.findById(id);
-        return empleado.get();
+    public ResponseEntity<Empleado> findById(@RequestParam Long id) {
+        return service.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/find-and")
-    public Long findByNombreAndContrasenaHash(@RequestParam String nombre, @RequestParam String contrasenaHash){
-        Empleado empleado =  service.findByNombre(nombre);
-        Long idEmp = -1L;
-
+    @PostMapping("/login")
+    public ResponseEntity<Empleado> login(@RequestBody Empleado loginData) {
+        Empleado empleado = service.findByNombre(loginData.getNombreUsuario());
         if (empleado != null) {
-            String hashedPassword = empleado.getContrasenaHash();
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            if (encoder.matches(contrasenaHash, hashedPassword)) {
-                idEmp = empleado.getId();
+            if (encoder.matches(loginData.getContrasenaHash(), empleado.getContrasenaHash())) {
+                return ResponseEntity.ok(empleado);
             }
         }
-
-        return idEmp;
+        return ResponseEntity.status(401).build(); // No autorizado
     }
+
 
     @PostMapping("/insert")
     public boolean save(@RequestBody Empleado empleado) {
@@ -69,4 +66,11 @@ public class EmpleadoController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PutMapping("/update")
+    public ResponseEntity<Empleado> updateEmpleado(@RequestBody Empleado empleadoActualizado) {
+        Empleado actualizado = service.updateEmpleado(empleadoActualizado);
+        return ResponseEntity.ok(actualizado);
+    }
+
+
 }

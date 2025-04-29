@@ -1,11 +1,15 @@
 package org.luciarodriguez.rocktownclimbingapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+@Getter
+@Setter
 @Entity
 public class Cliente {
     @Id
@@ -21,9 +25,11 @@ public class Cliente {
     private boolean menorEdad;
 
     @OneToMany(mappedBy = "cliente")
+    @JsonIgnore
     private List<Reserva> reservas = new ArrayList<>();
 
     @OneToMany(mappedBy = "cliente")
+    @JsonIgnore
     private List<Entrada> entradas = new ArrayList<>();
 
 

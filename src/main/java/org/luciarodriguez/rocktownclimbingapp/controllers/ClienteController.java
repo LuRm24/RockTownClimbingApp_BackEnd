@@ -7,15 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@Controller
-
+@RestController
 @RequestMapping("/cliente")
 public class ClienteController {
     @Autowired
     private final ClienteService service;
     public ClienteController(ClienteService service) { this.service = service; }
 
-    @GetMapping
+    @GetMapping("/select-all")
     public List<Cliente> getAll() { return service.findAll(); }
 
     @PostMapping
