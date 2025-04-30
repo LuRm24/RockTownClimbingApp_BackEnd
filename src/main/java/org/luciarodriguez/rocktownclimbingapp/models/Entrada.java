@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
+//Clase Entrada que representa una entrada del cliente al recinto
+//para llevar el contador de las sesiones gastadas del bono
 @Entity
 public class Entrada {
     @Id
