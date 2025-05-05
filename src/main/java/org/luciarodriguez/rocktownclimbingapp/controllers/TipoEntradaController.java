@@ -18,7 +18,7 @@ public class TipoEntradaController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/select-all")
     public List<TipoEntrada> getAll() {
         return service.findAll();
     }

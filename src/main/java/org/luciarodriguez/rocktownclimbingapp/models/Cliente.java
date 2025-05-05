@@ -1,5 +1,6 @@
 package org.luciarodriguez.rocktownclimbingapp.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -24,13 +25,12 @@ public class Cliente {
     private boolean pieGato;
     private boolean menorEdad;
 
+    @ManyToOne
+    @JsonBackReference
+    private TipoEntrada tipo_entrada;
+
     @OneToMany(mappedBy = "cliente")
     @JsonIgnore
     private List<Reserva> reservas = new ArrayList<>();
-
-    @OneToMany(mappedBy = "cliente")
-    @JsonIgnore
-    private List<Entrada> entradas = new ArrayList<>();
-
 
 }
