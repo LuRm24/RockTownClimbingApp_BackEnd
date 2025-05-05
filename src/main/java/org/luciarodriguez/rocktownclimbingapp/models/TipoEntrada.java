@@ -1,10 +1,9 @@
 package org.luciarodriguez.rocktownclimbingapp.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +24,6 @@ public class TipoEntrada {
     private String notas;
 
     @OneToMany(mappedBy = "tipo_entrada")
-    @JsonManagedReference
+    @JsonBackReference
     private List<Cliente> clientes = new ArrayList<>();
 }

@@ -26,7 +26,6 @@ public class Cliente {
     private boolean menorEdad;
 
     @ManyToOne
-    @JsonBackReference
     private TipoEntrada tipo_entrada;
 
     @OneToMany(mappedBy = "cliente")

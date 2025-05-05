@@ -47,6 +47,7 @@ public class ClienteService {
         clienteExistente.setMenorEdad(cliente.isMenorEdad());
         clienteExistente.setPieGato(cliente.isPieGato());
         clienteExistente.setSesionesGastadas(cliente.getSesionesGastadas());
+        clienteExistente.setTipo_entrada(cliente.getTipo_entrada());
 
         return clienteRepository.save(clienteExistente);
     }
