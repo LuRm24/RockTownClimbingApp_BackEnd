@@ -24,6 +24,10 @@ public class TipoEntrada {
     private String notas;
 
     @OneToMany(mappedBy = "tipo_entrada")
-    @JsonBackReference
+    @JsonBackReference("tipoentrada-cliente")
     private List<Cliente> clientes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "tipo_entrada")
+    @JsonBackReference("tipoentrada-venta")
+    private List<Venta> ventas = new ArrayList<>();
 }

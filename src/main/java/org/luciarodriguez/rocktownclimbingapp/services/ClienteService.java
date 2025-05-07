@@ -44,7 +44,7 @@ public class ClienteService {
         clienteExistente.setDni(cliente.getDni());
         clienteExistente.setTelefono(cliente.getTelefono());
         clienteExistente.setFechaBono(cliente.getFechaBono());
-        clienteExistente.setMenorEdad(cliente.isMenorEdad());
+        clienteExistente.setEdad(cliente.getEdad());
         clienteExistente.setPieGato(cliente.isPieGato());
         clienteExistente.setSesionesGastadas(cliente.getSesionesGastadas());
         clienteExistente.setTipo_entrada(cliente.getTipo_entrada());

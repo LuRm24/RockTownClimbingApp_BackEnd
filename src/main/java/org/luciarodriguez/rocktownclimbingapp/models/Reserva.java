@@ -1,5 +1,6 @@
 package org.luciarodriguez.rocktownclimbingapp.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
