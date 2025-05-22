@@ -17,6 +17,6 @@ public class HorarioDisponibleController {
     @GetMapping
     public List<HorarioDisponible> getAll() { return service.findAll(); }
 
-    @PostMapping
+    @PostMapping("/insert")
     public HorarioDisponible save(@RequestBody HorarioDisponible h) { return service.save(h); }
 }

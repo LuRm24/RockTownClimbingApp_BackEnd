@@ -17,6 +17,6 @@ public class ActividadController {
     @GetMapping
     public List<Actividad> getAll() { return service.findAll(); }
 
-    @PostMapping
+    @PostMapping("/insert")
     public Actividad save(@RequestBody Actividad a) { return service.save(a); }
 }

@@ -17,8 +17,6 @@ public class Reserva {
 
     @ManyToOne
     private Cliente cliente;
-    @ManyToOne
-    private Sala sala;
 
     @ManyToOne
     private Actividad actividad;

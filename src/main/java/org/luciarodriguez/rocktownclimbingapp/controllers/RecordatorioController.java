@@ -34,7 +34,8 @@ public class RecordatorioController {
         return service.save(recordatorio);
     }
 
-    @PostMapping("/delete")
+
+    @DeleteMapping("/delete")
     public ResponseEntity<Void> delete() {
         service.removeAll();
         return ResponseEntity.noContent().build(); // Devuelve HTTP 204
