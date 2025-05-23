@@ -104,14 +104,6 @@ public class Cliente {
         this.tipo_entrada = tipo_entrada;
     }
 
-    public List<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(List<Reserva> reservas) {
-        this.reservas = reservas;
-    }
-
     public List<Venta> getVentas() {
         return ventas;
     }
@@ -122,10 +114,6 @@ public class Cliente {
 
     @ManyToOne
     private TipoEntrada tipo_entrada;
-
-    @OneToMany(mappedBy = "cliente")
-    @JsonIgnore
-    private List<Reserva> reservas = new ArrayList<>();
 
     @OneToMany(mappedBy = "cliente")
     @JsonIgnore

@@ -1,5 +1,6 @@
 package org.luciarodriguez.rocktownclimbingapp.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.DayOfWeek;
@@ -16,6 +17,7 @@ public class HorarioDisponible {
     private LocalTime horaFin;
 
     @ManyToOne
+    @JsonBackReference
     private Actividad actividad;
 
     public Long getId() {

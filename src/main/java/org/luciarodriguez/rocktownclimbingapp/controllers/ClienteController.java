@@ -50,6 +50,7 @@ public class ClienteController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
     @GetMapping("/find-client")
     public List<Cliente> findByDniOrApellidosOrTelefono(
             @RequestParam(required = false) String dni,
