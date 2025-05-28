@@ -16,7 +16,9 @@ public class HorarioDisponibleService {
     private final HorarioDisponibleRepository repo;
     public HorarioDisponibleService(HorarioDisponibleRepository repo) { this.repo = repo; }
     public List<HorarioDisponible> findAll() { return repo.findAll(); }
-    public HorarioDisponible save(HorarioDisponible h) { return repo.save(h); }
+    public HorarioDisponible save(HorarioDisponible h) {
+
+        return repo.save(h); }
     public Optional<HorarioDisponible> findById(Long id) {
         return repo.findById(id);
     }

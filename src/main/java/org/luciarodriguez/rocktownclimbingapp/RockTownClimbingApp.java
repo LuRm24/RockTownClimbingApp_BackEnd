@@ -11,6 +11,5 @@ public class RockTownClimbingApp {
         System.setProperty("stripe.secret.key", dotenv.get("STRIPE_SECRET_KEY"));
         SpringApplication.run(RockTownClimbingApp.class, args);
 
-
     }
 }

@@ -21,7 +21,9 @@ public class ActividadController {
     public List<Actividad> getAll() { return service.findAll(); }
 
     @PostMapping("/insert")
-    public Actividad save(@RequestBody Actividad a) { return service.save(a); }
+    public Actividad save(@RequestBody Actividad a) {
+        return service.save(a);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> borrarActividad(@PathVariable Long id) {

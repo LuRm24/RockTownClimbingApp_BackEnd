@@ -17,6 +17,7 @@ public class HorarioDisponible {
     private LocalTime horaFin;
 
     @ManyToOne
+    @JoinColumn(name = "actividad_id")
     @JsonBackReference
     private Actividad actividad;
 
