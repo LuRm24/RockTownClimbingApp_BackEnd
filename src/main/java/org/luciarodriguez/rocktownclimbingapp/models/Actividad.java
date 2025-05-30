@@ -17,7 +17,6 @@ public class Actividad {
     @ManyToOne
     private Empleado empleado;
 
-   
     @OneToMany(mappedBy = "actividad", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<HorarioDisponible> horarios = new ArrayList<>();

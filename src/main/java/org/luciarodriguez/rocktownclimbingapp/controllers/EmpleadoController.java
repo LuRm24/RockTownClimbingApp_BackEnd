@@ -71,4 +71,6 @@ public class EmpleadoController {
         Empleado actualizado = service.updateEmpleado(empleadoActualizado);
         return ResponseEntity.ok(actualizado);
     }
+
+
 }
