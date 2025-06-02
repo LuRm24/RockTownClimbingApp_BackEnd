@@ -1,121 +1,75 @@
 package org.luciarodriguez.rocktownclimbingapp.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+
+/**
+ * Representa un cliente registrado en el rocódromo RockTown Climbing.
+ *
+ * Contiene información personal básica, así como detalles de su tipo de entrada,
+ * si alquila pies de gato, y la fecha de activación del bono.
+ *
+ * Esta clase se encuentra mapeada como entidad JPA y se persiste en la base de datos.
+ *
+ * @author Lucía Rodríguez Martín
+ * @version 1.0
+ */
 @Getter
 @Setter
 @Entity
 public class Cliente {
+
+    /**
+     * Identificador único del cliente. Se genera automáticamente.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    /**
+     * Nombre del cliente.
+     */
     private String nombre;
+
+    /**
+     * Apellidos del cliente.
+     */
     private String apellidos;
+
+    /**
+     * Número de teléfono del cliente.
+     */
     private String telefono;
+
+    /**
+     * DNI del cliente. Se utiliza como campo de búsqueda adicional.
+     */
     private String dni;
+
+    /**
+     * Fecha en la que se activó el bono del cliente.
+     */
     private LocalDate fechaBono;
-    private int sesionesGastadas;
+
+    /**
+     * Indica si el cliente alquila pies de gato.
+     */
     private boolean pieGato;
+
+    /**
+     * Edad del cliente.
+     */
     private int edad;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public LocalDate getFechaBono() {
-        return fechaBono;
-    }
-
-    public void setFechaBono(LocalDate fechaBono) {
-        this.fechaBono = fechaBono;
-    }
-
-    public int getSesionesGastadas() {
-        return sesionesGastadas;
-    }
-
-    public void setSesionesGastadas(int sesionesGastadas) {
-        this.sesionesGastadas = sesionesGastadas;
-    }
-
-    public boolean isPieGato() {
-        return pieGato;
-    }
-
-    public void setPieGato(boolean pieGato) {
-        this.pieGato = pieGato;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public TipoEntrada getTipo_entrada() {
-        return tipo_entrada;
-    }
-
-    public void setTipo_entrada(TipoEntrada tipo_entrada) {
-        this.tipo_entrada = tipo_entrada;
-    }
-
-    public List<Venta> getVentas() {
-        return ventas;
-    }
-
-    public void setVentas(List<Venta> ventas) {
-        this.ventas = ventas;
-    }
-
+    /**
+     * Tipo de entrada o bono asignado al cliente.
+     * Relación muchos-a-uno con {@link TipoEntrada}.
+     */
     @ManyToOne
     private TipoEntrada tipo_entrada;
 
-    @OneToMany(mappedBy = "cliente")
-    @JsonIgnore
-    private List<Venta> ventas = new ArrayList<>();
+    // Getters y setters explícitos incluidos por compatibilidad con frameworks y bibliotecas
 }
